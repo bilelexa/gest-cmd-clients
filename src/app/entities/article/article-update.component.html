@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" >
+            <h2 id="app-article-heading">Create or edit a Article</h2>
+            <div>
+                <div class="form-group" [hidden]="!article.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="article.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reference">Reference</label>
+                    <input type="text" class="form-control" name="reference" id="field_reference"
+                        [(ngModel)]="article.reference" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_designation">Designation</label>
+                    <input type="text" class="form-control" name="designation" id="field_designation"
+                        [(ngModel)]="article.designation" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_prix">Prix</label>
+                    <input type="number" class="form-control" name="prix" id="field_prix"
+                        [(ngModel)]="article.prix" min="0" jhiMin="0"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="isSaving" class="btn btn-primary">
+                    <span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

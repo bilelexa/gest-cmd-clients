@@ -1,0 +1,49 @@
+<div>
+    <h2 id="page-heading">
+        <span>Articles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-article" [routerLink]="['/article/new']">
+            <span >
+            Create new Article
+            </span>
+        </button>
+    </h2>
+    <br/>
+    <div class="table-responsive" *ngIf="articles">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Reference</span></th>
+            <th><span>Designation</span></th>
+            <th><span>Prix</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let article of articles ;trackBy: trackId">
+                <td><a [routerLink]="['/article', article.id, 'view' ]">{{article.id}}</a></td>
+                <td>{{article.reference}}</td>
+                <td>{{article.designation}}</td>
+                <td>{{article.prix}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/article', article.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/article', article.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="button" id="delete" class="btn btn-danger btn-sm"  (click)="delete(article.id)">
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

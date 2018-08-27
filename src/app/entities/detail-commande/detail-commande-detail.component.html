@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="detail_commande">
+            <h2><span>Detail Commande</span> {{detail_commande.id}}</h2>
+            <hr>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Qtcom</span></dt>
+                <dd>
+                    <span>{{detail_commande.qtcom}}</span>
+                </dd>
+                <dt><span>Article</span></dt>
+                <dd>
+                    <div *ngIf="detail_commande.article">
+                        <a [routerLink]="['/article', detail_commande.article?.id, 'view']">{{detail_commande.article?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Commande</span></dt>
+                <dd>
+                    <div *ngIf="detail_commande.commande">
+                        <a [routerLink]="['/commande', detail_commande.commande?.id, 'view']">{{detail_commande.commande?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/detail-commande', detail_commande.id, 'edit']"
+                    class="btn btn-primary">
+                <span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

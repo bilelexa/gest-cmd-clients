@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()">
+            <h2 id="app-detail-commande-heading">Create or edit a Detail Commande</h2>
+            <div>
+                <div class="form-group" [hidden]="!detail_commande.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="detail_commande.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qtcom">Qtcom</label>
+                    <input type="number" class="form-control" name="qtcom" id="field_qtcom"
+                        [(ngModel)]="detail_commande.qtcom" min="0" jhiMin="0"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_article_id">Article</label>
+                    <select class="form-control" id="field_article_id" name="article_id" [(ngModel)]="detail_commande.article_id" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="articleOption.id === detail_commande.article_id ? detail_commande.article_id : articleOption.id" *ngFor="let articleOption of articles; trackBy: trackArticleById">{{articleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_commande">Commande</label>
+                    <select class="form-control" id="field_commande" name="commande" [(ngModel)]="detail_commande.commande" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="commandeOption.id === detail_commande.commande?.id ? detail_commande.commande : commandeOption" *ngFor="let commandeOption of commandes; trackBy: trackCommandeById">{{commandeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="isSaving" class="btn btn-primary">
+                    <span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -27,5 +27,5 @@ export class ClientComponent implements OnInit {
     delete(id: number): void {
         this.clients = this.clients.filter(h => h.id !== id);
         this.clientService.delete(id).subscribe();
-      }
+    }
 }

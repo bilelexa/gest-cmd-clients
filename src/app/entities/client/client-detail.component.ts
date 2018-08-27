@@ -19,7 +19,7 @@ export class ClientDetailComponent implements OnInit {
     ngOnInit() {
         this.clientService.find(this.id).subscribe(client => {
                 this.client = client;
-            });
+        });
     }
 
     previousState() {

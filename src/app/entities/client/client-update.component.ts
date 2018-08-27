@@ -23,7 +23,7 @@ export class ClientUpdateComponent implements OnInit {
         this.clientService.find(id).subscribe(client => 
             this.client = client
         );
-    }
+        }
     }
 
     previousState() {

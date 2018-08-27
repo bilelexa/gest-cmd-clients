@@ -1,0 +1,57 @@
+<div>
+    <h2 id="page-heading">
+        <span>Detail Commandes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-detail-commande" [routerLink]="['/detail-commande/new']">
+            <span >
+            Create new Detail Commande
+            </span>
+        </button>
+    </h2>
+    <br/>
+    <div class="table-responsive" *ngIf="detail_commandes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Qtcom</span></th>
+            <th><span>Article</span></th>
+            <th><span>Commande</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let detail_commande of detail_commandes ;trackBy: trackId">
+                <td><a [routerLink]="['/detail-commande', detail_commande.id, 'view' ]">{{detail_commande.id}}</a></td>
+                <td>{{detail_commande.qtcom}}</td>
+                <td>
+                    <div *ngIf="detail_commande.article_id">
+                        <a [routerLink]="['../article', detail_commande.article_id, 'view' ]" >{{detail_commande.article_id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="detail_commande.commande">
+                        <a [routerLink]="['../commande', detail_commande.commande?.id, 'view' ]" >{{detail_commande.commande?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/detail-commande', detail_commande.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/detail-commande', detail_commande.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="button" id="delete" class="btn btn-danger btn-sm"  (click)="delete(detail_commande.id)">
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

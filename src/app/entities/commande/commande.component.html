@@ -1,0 +1,53 @@
+<div>
+    <h2 id="page-heading">
+        <span>Commandes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-commande" [routerLink]="['/commande/new']">
+            <span >
+            Create new Commande
+            </span>
+        </button>
+    </h2>
+    <br/>
+    <div class="table-responsive" *ngIf="commandes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Datcom</span></th>
+            <th><span>Total</span></th>
+            <th><span>Client</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let commande of commandes ;trackBy: trackId">
+                <td><a [routerLink]="['/commande', commande.id, 'view' ]">{{commande.id}}</a></td>
+                <td>{{commande.datcom}}</td>
+                <td>{{commande.total}}</td>
+                <td>
+                    <div *ngIf="commande.client_id">
+                        <a [routerLink]="['../client', commande.client_id, 'view' ]" >{{commande.client_id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/commande', commande.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/commande', commande.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="button" id="delete" class="btn btn-danger btn-sm"  (click)="delete(commande.id)">
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

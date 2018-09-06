@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class CommandeService {
-    private resourceUrl = 'http://localhost:8080/commandes';
+    private resourceUrl = 'http://localhost:3200/commandes';
 
     constructor(private http: HttpClient) {}
 
